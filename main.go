@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	inputExample := `6 7 3
@@ -12,6 +14,7 @@ func main() {
 	OO.....`
 
 	grid := NewGrid(inputExample)
+	grid.Explode(1, 3)
 	for _, val := range grid.Grid {
 		fmt.Println(val)
 	}

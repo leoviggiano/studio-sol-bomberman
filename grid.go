@@ -5,6 +5,7 @@ import (
 	"log"
 	"strings"
 
+	c "github.com/theviggo/studio-sol-bomber-man/constants"
 	utils "github.com/theviggo/studio-sol-bomber-man/utils"
 )
 
@@ -38,6 +39,50 @@ func NewGrid(input string) *Grid {
 		Columns: columns,
 		Seconds: seconds,
 		Grid:    grid,
+	}
+}
+
+func (g *Grid) Result() [][]string {
+	return nil
+}
+
+func (g *Grid) Explode(row, column int) {
+	g.Grid[row][column] = "Z"
+
+	// Detonate right side
+	for i := column + 1; i < g.Columns; i += 1 {
+		if g.Grid[row][i] == c.OBSTACLE {
+			break
+		}
+
+		g.Grid[row][i] = "Z"
+	}
+
+	// Detonate left side
+	for i := column - 1; i >= 0; i -= 1 {
+		if g.Grid[row][i] == c.OBSTACLE {
+			break
+		}
+
+		g.Grid[row][i] = "Z"
+	}
+
+	// Detonate upper side
+	for i := row - 1; i >= 0; i -= 1 {
+		if g.Grid[i][column] == c.OBSTACLE {
+			break
+		}
+
+		g.Grid[i][column] = "Z"
+	}
+
+	// Detonate lower side
+	for i := row + 1; i < g.Rows; i += 1 {
+		if g.Grid[i][column] == c.OBSTACLE {
+			break
+		}
+
+		g.Grid[i][column] = "Z"
 	}
 }
 
