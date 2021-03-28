@@ -27,6 +27,27 @@ func NewGrid(input string) *Grid {
 	}
 
 	rows, columns, seconds := config[0], config[1], config[2]
+
+	switch {
+	case rows < 1:
+		err = errors.New("Rows lesser than 1")
+	case rows > 200:
+		err = errors.New("Rows higher than 200")
+	case columns < 1:
+		err = errors.New("Columns lesser than 1")
+	case columns > 200:
+		err = errors.New("Columns higher than 200")
+	case seconds < 1:
+		err = errors.New("Seconds lesser than 1")
+	case seconds > 1e9:
+		err = errors.New("Seconds higher than 10^9")
+	}
+
+	if err != nil {
+		log.Fatalf("\n[Grid NewGrid] Condition not filled: %v", err)
+		return nil
+	}
+
 	grid, err := createGrid(splitted[1:], rows, columns)
 
 	if err != nil {
