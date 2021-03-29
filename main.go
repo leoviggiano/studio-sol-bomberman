@@ -1,21 +1,33 @@
 package main
 
-import (
-	"fmt"
-)
-
 func main() {
-	inputExample := `6 7 3
-	.......
-	..XO...
-	....O..
-	.X.....
-	OOX....
-	OO.....`
+	inputExample := `6 7 7
+	...O..O
+	..X..O.
+	...O...
+	.X...O.
+	..X....
+	.O.....`
 
 	grid := NewGrid(inputExample)
-	grid.Explode(1, 3)
-	for _, val := range grid.Grid {
-		fmt.Println(val)
-	}
+	grid.Result()
+	// 	printAll := true
+
+	// 	if printAll {
+	// 		for _, arr := range grid.Grid {
+	// 			fmt.Printf("[")
+	// 			for _, val := range arr {
+	// 				fmt.Printf(" %v ", val.Item)
+	// 			}
+	// 			fmt.Printf("]\n")
+	// 		}
+	// 	} else {
+	// 		for _, arr := range grid.Grid {
+	// 			fmt.Printf("[")
+	// 			for _, val := range arr {
+	// 				fmt.Printf(" %v(%d) ", val.Item, val.Seconds)
+	// 			}
+	// 			fmt.Printf("]\n")
+	// 		}
+	// 	}
 }
