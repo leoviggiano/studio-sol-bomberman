@@ -32,9 +32,8 @@ type Tile struct {
 	Column  int
 }
 
-func NewGrid(input string) *Grid {
-	splitted := strings.Split(input, "\n")
-	config, err := utils.SliceAtoi(strings.Split(splitted[0], " "))
+func NewGrid(input []string) *Grid {
+	config, err := utils.SliceAtoi(strings.Split(input[0], " "))
 
 	if err != nil {
 		log.Fatalf("\n[Grid NewGrid] Error on convert config string slice to an integer slice: %v", err)
@@ -63,7 +62,7 @@ func NewGrid(input string) *Grid {
 		return nil
 	}
 
-	grid, err := createGrid(splitted[1:], rows, columns)
+	grid, err := createGrid(input[1:], rows, columns)
 
 	if err != nil {
 		log.Fatalf("\n[Grid CreateGrid] Error on create grid: %v", err)
@@ -111,7 +110,10 @@ func (g *Grid) Result() {
 		}
 
 		for _, row := range grid {
-			fmt.Println(row)
+			for _, item := range row {
+				fmt.Printf(" %v ", item)
+			}
+			fmt.Println()
 		}
 
 	default:
