@@ -20,7 +20,6 @@ func main() {
 		} else {
 			break
 		}
-
 	}
 
 	grid := NewGrid(input)

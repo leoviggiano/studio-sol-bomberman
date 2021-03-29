@@ -92,6 +92,7 @@ func (g *Grid) Result(printResult bool) []string {
 
 	output := make([]string, 0)
 	result := ""
+
 	switch {
 	case g.Seconds > 4:
 		grid := make([][]string, 0)
@@ -109,6 +110,7 @@ func (g *Grid) Result(printResult bool) []string {
 				result += fmt.Sprintf(" %v ", item)
 				output = append(output, item)
 			}
+
 			result += "\n"
 		}
 
@@ -118,6 +120,7 @@ func (g *Grid) Result(printResult bool) []string {
 				result += fmt.Sprintf(" %v ", item.Item)
 				output = append(output, item.Item)
 			}
+
 			result += "\n"
 		}
 	}
@@ -261,10 +264,8 @@ func (g *Grid) addSecond() {
 
 		if g.FirstExplosion == nil {
 			g.FirstExplosion = g.copyArray()
-
 		} else if g.LastExplosion == nil {
 			g.LastExplosion = g.copyArray()
-
 		}
 	}
 }
@@ -291,6 +292,7 @@ func filterItems(row string) (newInput []string) {
 			newInput = append(newInput, string(item))
 		}
 	}
+
 	return
 }
 
