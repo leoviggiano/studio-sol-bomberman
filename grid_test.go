@@ -252,7 +252,7 @@ func TestGridResult_NineHundredMillionsAndThreeSeconds(t *testing.T) {
 }
 
 func TestGridResult_OneBillionSeconds(t *testing.T) {
-	for _, test := range nineHundredMillionsAndThreeSecondTests {
+	for _, test := range oneBillionSecondsTests {
 		output := NewGrid(strings.Split(test.input, "\n")).Result(false)
 		expected := test.expected
 
