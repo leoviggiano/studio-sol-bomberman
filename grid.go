@@ -94,11 +94,11 @@ func (g *Grid) Result(printResult bool) []string {
 	result := ""
 
 	switch {
-
 	case g.Seconds > 4 && g.Seconds%2 != 0:
 		grid := make([][]string, 0)
 
 		// Verify if it's the first pattern of explosion, or if it's the second one
+		// Formula explained on estudo/readme.md
 		isFirstExplosion := g.Seconds/2%2 != 0
 
 		if isFirstExplosion {
