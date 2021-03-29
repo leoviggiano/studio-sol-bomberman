@@ -7,7 +7,6 @@ INPUT EXAMPLE
 OOX....
 OO.....
 
-
 6 = ROWS
 7 = COLUMNS
 3 = GRID STATE AFTER X SECONDS
@@ -22,3 +21,70 @@ OO.....
 8 -> Explode 5rd Bombs
 9 -> Add Bombs
 10 -> Explode 7rd Bombs
+
+INPUTS USED IN TESTS:
+
+1 Second
+3 3 1
+.O.
+.X.
+...
+
+5 5 1
+.O..X
+.X..O
+....X
+XX.O.
+XOXO.
+
+2 Seconds
+3 3 2
+OOO
+OXO
+OOO
+
+5 5 2
+OOOOX
+OXOOO
+OOOOX
+XXOOO
+XOXOO
+
+3 Seconds
+3 3 3
+.O.
+.X.
+...
+
+5 5 3
+.O..X
+.X..O
+....X
+XX.O.
+XOXO.
+
+900.000.001 Seconds
+3 3 900000001
+.O.
+.X.
+...
+
+5 5 900000001
+.O..X
+.X..O
+....X
+XX.O.
+XOXO.
+
+1.000.000.000 Seconds
+3 3 1000000000
+.O.
+.X.
+...
+
+5 5 1000000000
+.O..X
+.X..O
+....X
+XX.O.
+XOXO.

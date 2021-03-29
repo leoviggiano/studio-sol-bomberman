@@ -77,16 +77,8 @@ func NewGrid(input []string) *Grid {
 	}
 }
 
-func (g *Grid) PrintGrid() {
-	for _, row := range g.Grid {
-		for _, item := range row {
-			fmt.Printf(" %v ", item.Item)
-		}
-		fmt.Println()
-	}
-}
-
-func (g *Grid) Result() {
+func (g *Grid) Result(printResult bool) []string {
+	// After 5 iterations the result will be the same, depending if seconds is odd or even
 	for i := 1; i <= g.Seconds && i <= 5; i += 1 {
 		g.addSecond()
 		switch i {
@@ -98,9 +90,12 @@ func (g *Grid) Result() {
 		}
 	}
 
+	output := make([]string, 0)
+	result := ""
 	switch {
 	case g.Seconds > 4:
-		var grid [][]string
+		grid := make([][]string, 0)
+		// Verify if it's the first pattern of explosion, or if it's the second one
 		isFirstExplosion := g.Seconds%2 == 0
 
 		if isFirstExplosion {
@@ -111,14 +106,27 @@ func (g *Grid) Result() {
 
 		for _, row := range grid {
 			for _, item := range row {
-				fmt.Printf(" %v ", item)
+				result += fmt.Sprintf(" %v ", item)
+				output = append(output, item)
 			}
-			fmt.Println()
+			result += "\n"
 		}
 
 	default:
-		g.PrintGrid()
+		for _, row := range g.Grid {
+			for _, item := range row {
+				result += fmt.Sprintf(" %v ", item.Item)
+				output = append(output, item.Item)
+			}
+			result += "\n"
+		}
 	}
+
+	if printResult {
+		fmt.Println(result)
+	}
+
+	return output
 }
 
 func (g *Grid) Explode(row, column int) {

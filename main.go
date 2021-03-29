@@ -24,5 +24,5 @@ func main() {
 	}
 
 	grid := NewGrid(input)
-	grid.Result()
+	grid.Result(true)
 }
