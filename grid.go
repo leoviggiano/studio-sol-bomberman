@@ -44,17 +44,17 @@ func NewGrid(input []string) *Grid {
 
 	switch {
 	case rows < 1:
-		err = errors.New("Rows lesser than 1")
+		err = errors.New("Rows less than 1")
 	case rows > 200:
-		err = errors.New("Rows higher than 200")
+		err = errors.New("Rows greater than 200")
 	case columns < 1:
-		err = errors.New("Columns lesser than 1")
+		err = errors.New("Columns less than 1")
 	case columns > 200:
-		err = errors.New("Columns higher than 200")
+		err = errors.New("Columns greater than 200")
 	case seconds < 1:
-		err = errors.New("Seconds lesser than 1")
+		err = errors.New("Seconds less than 1")
 	case seconds > 1e9:
-		err = errors.New("Seconds higher than 10^9")
+		err = errors.New("Seconds greater than 10^9")
 	}
 
 	if err != nil {
