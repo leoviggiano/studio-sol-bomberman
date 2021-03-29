@@ -138,6 +138,35 @@ var nineHundredMillionsAndOneSecondTests = []IndexTest{
 	},
 }
 
+var nineHundredMillionsAndThreeSecondTests = []IndexTest{
+	{
+		input: `3 3 900000003
+    .O.
+    .X.
+    ...`,
+		expected: []string{
+			".", ".", ".",
+			"O", "X", "O",
+			"O", "O", "O",
+		},
+	},
+	{
+		input: `5 5 900000003
+    .O..X
+    .X..O
+    ....X
+    XX.O.
+    XOXO.`,
+		expected: []string{
+			".", ".", ".", ".", "X",
+			"O", "X", ".", ".", ".",
+			"O", "O", "O", ".", "X",
+			"X", "X", ".", ".", ".",
+			"X", ".", "X", ".", ".",
+		},
+	},
+}
+
 var oneBillionSecondsTests = []IndexTest{
 	{
 		input: `3 3 1000000000
@@ -145,7 +174,7 @@ var oneBillionSecondsTests = []IndexTest{
     .X.
     ...`,
 		expected: []string{
-			".", ".", ".",
+			"O", "O", "O",
 			"O", "X", "O",
 			"O", "O", "O",
 		},
@@ -158,11 +187,11 @@ var oneBillionSecondsTests = []IndexTest{
     XX.O.
     XOXO.`,
 		expected: []string{
-			".", ".", ".", ".", "X",
-			"O", "X", ".", ".", ".",
-			"O", "O", "O", ".", "X",
-			"X", "X", ".", ".", ".",
-			"X", ".", "X", ".", ".",
+			"O", "O", "O", "O", "X",
+			"O", "X", "O", "O", "O",
+			"O", "O", "O", "O", "X",
+			"X", "X", "O", "O", "O",
+			"X", "O", "X", "O", "O",
 		},
 	},
 }
@@ -211,8 +240,19 @@ func TestGridResult_NineHundredMillionsAndOneSeconds(t *testing.T) {
 	}
 }
 
+func TestGridResult_NineHundredMillionsAndThreeSeconds(t *testing.T) {
+	for _, test := range nineHundredMillionsAndThreeSecondTests {
+		output := NewGrid(strings.Split(test.input, "\n")).Result(false)
+		expected := test.expected
+
+		if !Equal(output, expected) {
+			t.Errorf("Expected %v but got %v", expected, output)
+		}
+	}
+}
+
 func TestGridResult_OneBillionSeconds(t *testing.T) {
-	for _, test := range oneBillionSecondsTests {
+	for _, test := range nineHundredMillionsAndThreeSecondTests {
 		output := NewGrid(strings.Split(test.input, "\n")).Result(false)
 		expected := test.expected
 
