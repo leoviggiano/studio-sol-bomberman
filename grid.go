@@ -81,13 +81,6 @@ func (g *Grid) Result(printResult bool) []string {
 	// After 5 iterations the result will be the same, depending if seconds is odd or even
 	for i := 1; i <= g.Seconds && i <= 5; i += 1 {
 		g.addSecond()
-		switch i {
-		case 2:
-			g.fillGrid()
-
-		case 4:
-			g.fillGrid()
-		}
 	}
 
 	output := make([]string, 0)
